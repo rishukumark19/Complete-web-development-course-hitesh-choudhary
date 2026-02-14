@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multimedia and ARIA Notes</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        border-top: 5px solid #4a90e2;
+      }
+      h1 {
+        font-size: 2.2rem;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+      h2 {
+        font-size: 1.5rem;
+        color: #34495e;
+        margin-top: 30px;
+        margin-bottom: 15px;
+      }
+      .intro-text {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 20px;
+      }
+      .media-section {
+        background: #fafafa;
+        padding: 20px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        margin-bottom: 30px;
+      }
+      figure {
+        margin: 0 0 20px 0;
+        text-align: center;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      figcaption {
+        font-size: 0.9rem;
+        color: #777;
+        margin-top: 8px;
+        font-style: italic;
+      }
+      video {
+        max-width: 100%;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li.q-item {
+        margin-bottom: 25px;
+        padding: 15px;
+        background-color: #fff;
+        border-left: 3px solid #4a90e2;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      }
+      .question {
+        font-weight: bold;
+        color: #2c3e50;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.05rem;
+      }
+      .answer {
+        color: #555;
+      }
+      .highlight {
+        background-color: #e8f4fd;
+        padding: 2px 5px;
+        border-radius: 3px;
+        color: #0066cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Web Development Notes</h1>
+        <p class="intro-text">
+            Topics: Media Content, ARIA Labels, and Accessibility.
+        </p>
+
+        <h2>Media Content</h2>
+        <div class="media-section">
+            <p><strong>Images:</strong></p>
+            <!-- Just an image -->
+            <figure>
+                <img src="image.png" alt="The beautiful MDN logo." title="media learning">
+                <figcaption>Standard Image</figcaption>
+            </figure>
+
+            <p><strong>Image with Caption:</strong></p>
+            <figure>
+            <img src="image.png" alt="The beautiful MDN logo." />
+            <figcaption>MDN Logo - Example of figure and figcaption</figcaption>
+            </figure>
+
+            <p><strong>Videos:</strong></p>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <video
+                    src="Video_Generation_Based_On_Reference.mp4"
+                    controls
+                    width="300px"
+                ></video>
+                <video
+                    src="Video_Generation_Based_On_Reference.mp4"
+                    width="200px"
+                    controls
+                    controlslist="nofullscreen nodownload noremoteplayback noplaybackrate"
+                ></video>
+            </div>
+        </div>
+
+        <h1>ARIA (Accessible Rich Internet Applications)</h1>
+        <p>
+            ARIA deals with <strong>accessibility</strong>. It stands for Accessible Rich Internet Applications. 
+            It is crucial when you want any device (especially assistive technologies like screen readers) to meaningful access rich, dynamic web content.
+        </p>
+        <p>
+            <strong>Key use cases:</strong>
+            <ul>
+                <li>Government / Banking websites</li>
+                <li>Speech recognition compatibility</li>
+                <li>Keyboard navigation support</li>
+            </ul>
+        </p>
+
+        <h2>Basic Understanding & Q&A</h2>
+        <ul>
+            <li class="q-item">
+                <span class="question">1. What is ARIA and what is this page about?</span>
+                <span class="answer">ARIA (Accessible Rich Internet Applications) defines ways to make the web more accessible to people with disabilities. This page specifically lists ARIA guides that help improve accessibility of features like tables, forms, and keyboard navigation in web pages.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">2. Why do we need ARIA guides?</span>
+                <span class="answer">Modern web apps use dynamic content and custom widgets that can be hard to understand for assistive technologies. The ARIA guides show how to mark up these features so that screen readers and other tools can interpret them correctly.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">3. What is an ARIA live region and when is it needed?</span>
+                <span class="answer">An ARIA live region is a part of the page whose dynamic content changes are announced automatically by assistive technologies. It is needed when JavaScript updates part of the page (like search results or alerts) without a full page reload, so users who cannot see the screen still know that something changed.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">4. Give an example where a live region is useful.</span>
+                <span class="answer">A good example is a search results list that updates as the user types, without reloading the page. Another example is a small notification or alert that appears on the page but does not take focus, such as “Item added to cart.”</span>
+            </li>
+            <li class="q-item">
+                <span class="question">5. What is the ARIA Screen Reader Implementors Guide about?</span>
+                <span class="answer">It is a guide aimed at screen reader implementors describing how to interpret and support live region markup. It recognizes that live regions are complex and somewhat open to interpretation, and tries to balance guidance with allowing innovation and competition between screen readers.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">6. Why does the page say live regions are “somewhat open to interpretation”?</span>
+                <span class="answer">Because live region behavior involves many edge cases and timing issues, different screen readers may implement it differently. The guide offers implementation advice while accepting that vendors may experiment to find the best user experience.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">7. What problem do multipart labels solve?</span>
+                <span class="answer">Multipart labels solve the problem where the label text for a form control is split around the input, forming a sentence. Without ARIA techniques, it can be hard for a screen reader to treat the entire sentence as a single coherent label for the control.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">8. What is the classic example used in the multipart labels guide?</span>
+                <span class="answer">The classic example is a browser setting like “Delete history after [ x ] days.” Here “Delete history after” is before the textbox, the number (for example 21) is in the textbox, and “days” comes after, forming one understandable sentence.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">9. What does “Using ARIA: Roles, states, and properties” explain?</span>
+                <span class="answer">It explains that ARIA defines semantics that can be applied to elements, divided into roles and states/properties. The article describes how authors must assign an appropriate role plus states and properties to an element during its life cycle, unless native HTML already provides suitable ARIA semantics.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">10. What is an ARIA role?</span>
+                <span class="answer">An ARIA role defines the type of user interface element an object represents, such as a widget role or a landmark. This tells assistive technologies “what this thing is,” so they can expose it correctly to users.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">11. What are ARIA states and properties?</span>
+                <span class="answer">States and properties are pieces of information that further describe an element associated with a role. They indicate things like current status or characteristics of the element (for example, that some state exists and may change over the element’s life cycle).</span>
+            </li>
+            <li class="q-item">
+                <span class="question">12. What does adding ARIA semantics actually change?</span>
+                <span class="answer">Adding ARIA semantics only exposes extra information to the browser’s accessibility API and assistive technologies. It does not change the page’s DOM or visual appearance.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">13. When should authors assign ARIA roles, states, and properties?</span>
+                <span class="answer">Authors must assign a suitable ARIA role and appropriate states and properties to an element throughout its life cycle when needed. They should not add ARIA semantics if the element already has appropriate ARIA semantics via a proper HTML element.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">14. Why is it important to use appropriate HTML elements before ARIA?</span>
+                <span class="answer">The page notes that some elements already have “appropriate ARIA semantics” when you use the right HTML element. This implies authors should rely on semantic HTML first and only use ARIA when native semantics are not enough.</span>
+            </li>
+            <li class="q-item">
+                <span class="question">15. Which related topics are recommended in the “See also” section?</span>
+                <span class="answer">The “See also” section links to resources like “Designing accessible forms,” “Understanding WAI-ARIA basics,” and “Creating keyboard-navigable JavaScript widgets.” It also links to topics like “Labeling widgets,” “Landmark roles,” “ARIA live regions,” and “Displaying accessible tables.”</span>
+            </li>
+            <li class="q-item">
+                <span class="question">16. How do these related resources connect to ARIA guides?</span>
+                <span class="answer">They cover practical aspects of building accessible forms, widgets, tables, focus management, and testing, which often depend on correct ARIA usage. Together with the ARIA guides, they form a broader learning path for building accessible web applications.</span>
+            </li>
+        </ul>
+    </div>
+  </body>
+</html>

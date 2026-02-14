@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drop Down Nav</title>
+    <style>
+      .nav {
+        background-color: greenyellow;
+        padding: 10px;
+      }
+      .nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+      .nav a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+        display: block;
+      }
+      .dropdown-content {
+        display: none;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+        position: absolute;
+        background-color: #adff2f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a href="#">About</a>
+          <div class="dropdown-content">
+            <a href="#">Our Story</a>
+            <a href="#">Our Team</a>
+            <a href="#">Contact</a>
+          </div>
+        </li>
+        <li><a href="#">Services</a></li>
+        <li><button class="btn-btn-primary">login</button></li>
+      </ul>
+    </nav>
+  </body>
+</html>

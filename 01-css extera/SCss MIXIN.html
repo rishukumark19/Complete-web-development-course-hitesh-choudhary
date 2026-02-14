@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Custom Functions & Mixins Notes</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        border-top: 5px solid #e24a85; /* Pinkish for CSS/Sass vibe */
+      }
+      h1 {
+        font-size: 2.2rem;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+      h2 {
+        font-size: 1.5rem;
+        color: #34495e;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-left: 4px solid #e24a85;
+        padding-left: 10px;
+      }
+      .intro-text {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 20px;
+        background-color: #fff0f6;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid #ffdeeb;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li.q-item {
+        margin-bottom: 25px;
+        padding: 15px;
+        background-color: #fff;
+        border-left: 3px solid #e24a85;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+      .question {
+        font-weight: bold;
+        color: #2c3e50;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.05rem;
+      }
+      .answer {
+        color: #555;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .example-box {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        padding: 10px;
+        margin-top: 10px;
+      }
+      .example-label {
+        font-size: 0.85rem;
+        font-weight: bold;
+        color: #6c757d;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        display: block;
+      }
+      pre {
+        background: #2d2d2d;
+        color: #ccc;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-family: "Consolas", "Monaco", monospace;
+        font-size: 0.9em;
+        margin: 0;
+      }
+      code {
+        font-family: "Consolas", "Monaco", monospace;
+        color: #e24a85;
+        background: #fdf2f7;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      pre code {
+        color: inherit;
+        background: transparent;
+        padding: 0;
+      }
+      .note {
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CSS Custom Functions & Mixins</h1>
+
+      <div class="intro-text">
+        <p>
+          <strong>Introduction:</strong> The CSS Custom Functions and Mixins
+          module is an exciting upcoming feature that brings programming-like
+          capabilities directly to native CSS. Historically, developers relied
+          on preprocessors like SASS or LESS to use functions and mixins. This
+          module aims to make those features native to the browser, allowing for
+          dynamic value calculation and reusable style patterns without a build
+          step.
+        </p>
+      </div>
+
+      <h2>Concept Questions & Examples</h2>
+      <ul>
+        <li class="q-item">
+          <span class="question"
+            >1. What is the CSS custom functions and mixins module?</span
+          >
+          <span class="answer"
+            >It is a CSS module that lets developers create reusable blocks of
+            CSS that can accept arguments, contain complex logic (using things
+            like <code>if()</code> and <code>@media</code>), and return values.
+            This brings power previously consistent with preprocessors directly
+            into the browser.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Example Scenario</span>
+            <p style="font-size: 0.9rem; margin: 0">
+              Instead of repeating
+              <code>box-shadow: 0 4px 6px rgba(0,0,0,0.1)</code> everywhere, you
+              could define it once as a reusable mixin and apply it to any card
+              or button.
+            </p>
+          </div>
+        </li>
+        <li class="q-item">
+          <span class="question"
+            >2. What are CSS custom functions and how are they defined?</span
+          >
+          <span class="answer"
+            >CSS custom functions are functions you define in CSS using the
+            <code>@function</code> at‑rule. They can be called as values inside
+            any CSS property and return a value based on their arguments and
+            internal logic.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Code Example</span>
+            <pre>
+@function --double(--val) {
+  result: calc(var(--val) * 2);
+}
+</pre
+            >
+          </div>
+        </li>
+        <li class="q-item">
+          <span class="question"
+            >3. What does <code>&lt;dashed-function&gt;</code> syntax look
+            like?</span
+          >
+          <span class="answer"
+            >It looks similar to custom properties, but with parentheses and
+            arguments, for example <code>--my-function(30px, 3)</code>. This
+            <code>&lt;dashed-function&gt;</code> form is how you call a custom
+            function in property values.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Code Example</span>
+            <pre>
+.box {
+  /* Calling a custom function */
+  width: --double(50px); /* Becomes 100px */
+}
+</pre
+            >
+          </div>
+        </li>
+        <li class="q-item">
+          <span class="question">4. What are CSS mixins in this module?</span>
+          <span class="answer"
+            >CSS mixins are reusable sets of CSS properties defined using
+            <code>@mixin</code> and applied using <code>@apply</code> inside
+            rulesets. They can be customized with arguments and logic so you can
+            reuse patterns of styles across multiple selectors.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Code Example</span>
+            <pre>
+@mixin --center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero {
+  @apply --center-flex; /* Applies the styles above */
+  height: 100vh;
+}
+</pre
+            >
+          </div>
+        </li>
+        <li class="q-item">
+          <span class="question"
+            >5. Can custom functions and mixins have typed arguments and return
+            values?</span
+          >
+          <span class="answer"
+            >Yes, they can be given optional data types for their arguments and
+            their return values. This restricts what values can be passed in and
+            what can be returned, making them safer and more predictable.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Code Example</span>
+            <pre>
+/* Function only accepts 'length' (px, rem, etc.) */
+@function --spacer(type(length) --size) {
+  result: calc(var(--size) * 1.5);
+}
+</pre
+            >
+          </div>
+        </li>
+      </ul>
+
+      <h2>Support / Status Questions</h2>
+      <ul>
+        <li class="q-item">
+          <span class="question"
+            >6. Which of these features are currently supported in
+            browsers?</span
+          >
+          <span class="answer"
+            >Currently, only CSS custom functions have partial browser support
+            (mainly in experimental builds). CSS mixins are not supported in any
+            browser yet.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Note</span>
+            <p style="font-size: 0.9rem; margin: 0">
+              You usually need to enable "Experimental Web Platform features" in
+              Chrome flags to test these today.
+            </p>
+          </div>
+        </li>
+        <li class="q-item">
+          <span class="question"
+            >7. Which at‑rules does this module introduce that are not yet
+            supported?</span
+          >
+          <span class="answer"
+            >Besides <code>@function</code>, the module introduces
+            <code>@mixin</code>, <code>@apply</code>, <code>@contents</code>,
+            and <code>@env</code>. At the moment, no browsers support these
+            additional at‑rules.</span
+          >
+        </li>
+      </ul>
+
+      <h2>Reference and API Questions</h2>
+      <ul>
+        <li class="q-item">
+          <span class="question"
+            >8. Which at‑rule is central to CSS custom functions, and what
+            descriptor is associated with it?</span
+          >
+          <span class="answer"
+            >The central at‑rule is <code>@function</code>. It has a
+            <code>result</code> descriptor that represents the value returned by
+            the function.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Syntax Refresher</span>
+            <pre>
+@function --name {
+  result: cyan; /* 'result' is the return statement */
+}
+</pre
+            >
+          </div>
+        </li>
+        <li class="q-item">
+          <span class="question"
+            >9. Name the main interfaces associated with CSS custom
+            functions.</span
+          >
+          <span class="answer"
+            >The key interfaces are <code>CSSFunctionRule</code>,
+            <code>CSSFunctionDeclarations</code>, and
+            <code>CSSFunctionDescriptors</code>. These are used in the CSSOM to
+            represent and work with custom functions in JavaScript.</span
+          >
+        </li>
+      </ul>
+
+      <h2>Relationship / Context Questions</h2>
+      <ul>
+        <li class="q-item">
+          <span class="question"
+            >10. How do CSS custom functions relate to existing CSS math and
+            value functions like <code>calc()</code> or
+            <code>clamp()</code>?</span
+          >
+          <span class="answer"
+            >They live in the same “values and units” space as functions like
+            <code>calc()</code>, <code>max()</code>, <code>min()</code>,
+            <code>clamp()</code>, and trigonometric or math functions. You can
+            combine custom functions with these built‑in functions to build more
+            powerful and reusable value logic.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Code Example</span>
+            <pre>
+width: calc(100% - --sidebar-width()); 
+/* Combining built-in calc() with a custom function */
+</pre
+            >
+          </div>
+        </li>
+        <li class="q-item">
+          <span class="question"
+            >11. Where is the behavior of CSS functions and mixins formally
+            defined?</span
+          >
+          <span class="answer"
+            >It is defined in the “CSS Functions and Mixins Module”
+            specification. MDN links directly to the current draft of this
+            spec.</span
+          >
+        </li>
+      </ul>
+
+      <h2>“See also” / Navigation</h2>
+      <ul>
+        <li class="q-item">
+          <span class="question"
+            >12. Which related CSS features does the page highlight in “See
+            also”?</span
+          >
+          <span class="answer"
+            >It highlights the <code>if()</code> value function and the
+            <code>@media</code> at‑rule as related features. These are examples
+            of tools you can use for logic inside custom functions or
+            mixins.</span
+          >
+          <div class="example-box">
+            <span class="example-label">Logic Example</span>
+            <pre>
+@function --text-color(--bg) {
+  /* Using if() for logic inside a function */
+  result: if(var(--bg) == black, white, black);
+}
+</pre
+            >
+          </div>
+        </li>
+      </ul>
+
+      <p class="note">
+        Source:
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Custom_functions_and_mixins"
+          target="_blank"
+          >MDN Web Docs - Custom functions and mixins</a
+        >
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login page</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        /* 100vh : for width of the page  */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        background-color: #958d8d;
+        border-radius: 8px;
+        padding: 30px;
+        width: 300px;
+      }
+      h2 {
+        color: #508ed1;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        /* gap: ; */
+        input {
+          margin-bottom: 15px;
+          padding: 10px;
+          border-radius: 5px;
+          background-color: #817c7c;
+          border: 1px solid black;
+        }
+      }
+      button {
+        background-color: #4e50dc;
+        color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+      }
+      button:hover {
+        background-color: #2e31ea;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Login</h2>
+      <form action="">
+        <input type="email" placeholder="email" />
+        <input type="password" placeholder="password" />
+        <button class="submit">Login</button>
+      </form>
+    </div>
+  </body>
+</html>
