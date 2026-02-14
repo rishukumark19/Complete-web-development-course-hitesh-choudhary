@@ -17,3 +17,9 @@ Symbol: unique value / key
 */
 //  avoide var
 let score = 102;
+let name = "mycode";
+let isLoggedin = false;
+
+//object
+let teaType = ["chai", "coffee", "lassi"];
+let user = { firstname: "name", lastname: "lastname" };
