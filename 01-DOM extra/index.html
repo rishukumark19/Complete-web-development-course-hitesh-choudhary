@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn DOM Manipulation - Interactive Playground</title>
+    <!-- Link to our CSS file for styling -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>DOM Manipulation Playground</h1>
+      <p>
+        Welcome! This page is designed to help you learn how JavaScript
+        interacts with the HTML page (the DOM).
+      </p>
+      <p class="instruction">
+        Open your **Console** (F12 -> Console) to see logs as you interact!
+      </p>
+    </header>
+
+    <main>
+      <!-- 
+            SECTION 1: Selecting and Changing Text 
+            We will learn how to grab an element and change its content.
+        -->
+      <section class="card">
+        <h2>1. Selecting & Changing Text</h2>
+        <p>
+          JavaScript can find elements on the page and change what they say.
+        </p>
+
+        <!-- This is the element we will change -->
+        <p id="text-target" class="demo-box">I am the original text.</p>
+
+        <!-- This button triggers the change -->
+        <button id="btn-change-text">Change Text</button>
+      </section>
+
+      <!-- 
+            SECTION 2: Changing Styles
+            We will learn how to change CSS properties using JavaScript.
+        -->
+      <section class="card">
+        <h2>2. Changing Styles</h2>
+        <p>We can also change colors, fonts, and sizes dynamically.</p>
+
+        <!-- This box will change color -->
+        <div id="color-box" class="demo-box">I change color!</div>
+
+        <button id="btn-change-color">Change Color</button>
+      </section>
+
+      <!-- 
+            SECTION 3: Handling Input
+            We will learn how to get values from input fields.
+        -->
+      <section class="card">
+        <h2>3. Reading User Input</h2>
+        <p>Type something below and display it on the page.</p>
+
+        <input type="text" id="input-field" placeholder="Type your name..." />
+        <button id="btn-greet">Greet Me</button>
+
+        <p id="greeting-display" class="hidden"></p>
+      </section>
+
+      <!-- 
+            SECTION 4: Creating and Adding Elements
+            We will learn how to create new HTML elements from scratch and add them to the page.
+        -->
+      <section class="card">
+        <h2>4. Creating Elements</h2>
+        <p>Let's add items to a list dynamically.</p>
+
+        <button id="btn-add-item">Add New Item</button>
+        <button id="btn-remove-item" class="secondary">Remove Last Item</button>
+
+        <!-- An empty list to start with -->
+        <ul id="dynamic-list">
+          <li>Item 1 (Existing)</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Right-click and "Inspect" to see the code!</p>
+    </footer>
+
+    <!-- Link to our JavaScript file where the logic lives -->
+    <script src="script.js"></script>
+  </body>
+</html>
